@@ -10,9 +10,9 @@ function db_connect(): PDO
             $db_username,
             $db_password,
             array(
-                PDO::MYSQL_ATTR_SSL_KEY   => './client-key.pem',
-                PDO::MYSQL_ATTR_SSL_CERT  => './client-cert.pem',
-                PDO::MYSQL_ATTR_SSL_CA    => './ca-cert.pem',
+                PDO::MYSQL_ATTR_SSL_KEY => './client-key.pem',
+                PDO::MYSQL_ATTR_SSL_CERT => './client-cert.pem',
+                PDO::MYSQL_ATTR_SSL_CA => './ca-cert.pem',
                 PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false
             )
         );
