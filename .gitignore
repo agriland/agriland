@@ -1,5 +1,5 @@
 # Secret
-/database_creds.inc.php
+/database_conninfo.inc.php
 
 # IDEs, editors
 /.theia
