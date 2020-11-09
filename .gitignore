@@ -1,0 +1,10 @@
+# Secret
+/database_creds.inc.php
+
+# IDEs, editors
+/.theia
+/.vscode
+/.idea
+
+# macOS
+.DS_Store
