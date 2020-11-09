@@ -1,5 +1,6 @@
 # Secret
 /database_conninfo.inc.php
+*.pem
 
 # IDEs, editors
 /.theia
