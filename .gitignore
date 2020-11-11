@@ -1,5 +1,5 @@
 # Secret
-/database_conninfo.inc.php
+src/database/database_conninfo.inc.php
 *.pem
 
 # IDEs, editors

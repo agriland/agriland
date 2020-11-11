@@ -1,6 +1,6 @@
 <?php
 
-include 'database.inc.php';
+include 'database/database.inc.php';
 
 $db_conn = db_connect();
 
