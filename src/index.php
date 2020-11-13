@@ -2,7 +2,7 @@
 
 include 'database/database.inc.php';
 
-$db_conn = db_connect();
+$db_conn = new Database();
 
 ?>
 
