@@ -2,6 +2,10 @@
 
 include 'database_conninfo.inc.php';
 
+class Field {
+    public string $address;
+}
+
 class Database
 {
     public PDO $conn;
@@ -26,5 +30,17 @@ class Database
         } catch (PDOException $e) {
             die("Could not connect to database: " . $e->getMessage());
         }
+    }
+
+    function haalBedrijvenOp(): array {
+        $sth = $this->conn->prepare("SELECT * FROM Boerenbedrijf ORDER BY Naam_Eigenaar");
+        $sth->execute();
+
+        return $sth->fetchAll();
+    }
+
+    function voegPerceelToe($bedrijfID, $straatnaam, $oppervlakte) {
+        $sth = $this->conn->prepare("INSERT INTO Perceel (Bedrijf_ID, Oppervlakte, Straatnaam) VALUES (?, ?, ?)");
+        $sth->execute($bedrijfID, $straatnaam, $oppervlakte);
     }
 }

@@ -11,9 +11,15 @@ $db_conn = new Database();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agriland</title>
+    <title>Agriland &middot; Home</title>
 </head>
 <body>
-    <p>Hallo</p>
+    <nav>
+        <ul>
+            <li>
+                <a href="/perceel.php">Perceel toevoegen</a>
+            </li>
+        </ul>
+    </nav>
 </body>
 </html>
