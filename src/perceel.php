@@ -55,5 +55,17 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
 
         <input type="submit" value="Toevoegen" />
     </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Naam eigenaar</th>
+                <th>Straatnaam</th>
+                <th>Oppervlakte</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </body>
 </html>

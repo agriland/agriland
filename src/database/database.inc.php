@@ -2,10 +2,6 @@
 
 include 'database_conninfo.inc.php';
 
-class Field {
-    public string $address;
-}
-
 class Database
 {
     public PDO $conn;
@@ -32,15 +28,28 @@ class Database
         }
     }
 
-    function haalBedrijvenOp(): array {
+    function haalBedrijvenOp(): array
+    {
         $sth = $this->conn->prepare("SELECT * FROM Boerenbedrijf ORDER BY Naam_Eigenaar");
         $sth->execute();
 
         return $sth->fetchAll();
     }
 
-    function voegPerceelToe(int $bedrijfID, float $oppervlakte, string $straatnaam) {
+    function voegPerceelToe(int $bedrijfID, float $oppervlakte, string $straatnaam)
+    {
         $sth = $this->conn->prepare("INSERT INTO Percelen (Bedrijf_ID, Oppervlakte, Straatnaam) VALUES (?, ?, ?)");
         $sth->execute([$bedrijfID, $oppervlakte, $straatnaam]);
+    }
+
+    function haalPercelenOp(): array
+    {
+        $sql = <<<'SQL'
+        SELECT * FROM Percelen AS p ORDER BY Straatnaam
+        INNER JOIN Boerenbedrijf b on b.Bedrijf_ID = p.Bedrijf_ID
+SQL;
+
+        $sth = $this->conn->prepare($sql);
+        return $sth->fetchAll();
     }
 }
