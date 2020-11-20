@@ -39,8 +39,8 @@ class Database
         return $sth->fetchAll();
     }
 
-    function voegPerceelToe($bedrijfID, $straatnaam, $oppervlakte) {
-        $sth = $this->conn->prepare("INSERT INTO Perceel (Bedrijf_ID, Oppervlakte, Straatnaam) VALUES (?, ?, ?)");
-        $sth->execute($bedrijfID, $straatnaam, $oppervlakte);
+    function voegPerceelToe(int $bedrijfID, float $oppervlakte, string $straatnaam) {
+        $sth = $this->conn->prepare("INSERT INTO Percelen (Bedrijf_ID, Oppervlakte, Straatnaam) VALUES (?, ?, ?)");
+        $sth->execute([$bedrijfID, $oppervlakte, $straatnaam]);
     }
 }
