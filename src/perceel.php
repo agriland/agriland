@@ -30,6 +30,9 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
     </style>
 </head>
 <body>
+    <h1>Percelen</h1>
+
+    <h2>Perceel toevoegen</h2>
     <form method="POST">
         <label for="oppervlakte">Oppervlakte</label>
         <input type="number" step="0.1" name="oppervlakte" />
@@ -56,6 +59,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
         <input type="submit" value="Toevoegen" />
     </form>
 
+    <h2>Percelen</h2>
     <table>
         <thead>
             <tr>
@@ -65,6 +69,20 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             </tr>
         </thead>
         <tbody>
+            <?php
+
+            $percelen = $db_conn->haalPercelenOp();
+
+            foreach ($percelen as $perceel) {
+            ?>
+                <tr>
+                    <td><?php echo $perceel["Naam_Eigenaar"] ?></td>
+                    <td><?php echo $perceel["Straatnaam"] ?></td>
+                    <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
+                </tr>
+            <?php
+            }
+            ?>
         </tbody>
     </table>
 </body>

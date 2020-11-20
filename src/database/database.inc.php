@@ -45,11 +45,14 @@ class Database
     function haalPercelenOp(): array
     {
         $sql = <<<'SQL'
-        SELECT * FROM Percelen AS p ORDER BY Straatnaam
+        SELECT * FROM Percelen AS p
         INNER JOIN Boerenbedrijf b on b.Bedrijf_ID = p.Bedrijf_ID
+        ORDER BY Straatnaam
 SQL;
 
         $sth = $this->conn->prepare($sql);
+        $sth->execute();
+        
         return $sth->fetchAll();
     }
 }
