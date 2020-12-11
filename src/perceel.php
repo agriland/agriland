@@ -61,6 +61,17 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
 
     <h2>Percelen</h2>
     <table>
+<style>
+th, td {
+  padding: 5px;
+  text-align: left;
+}
+
+th{background-color: #ffffff;}
+tr:nth-child(odd) {background-color: #00f50c;}
+tr:nth-child(even) {background-color: #f50000;}
+tr:hover {background-color: #24c6d1;}
+    </style>
         <thead>
             <tr>
                 <th>Naam eigenaar</th>
