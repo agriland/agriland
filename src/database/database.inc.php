@@ -47,12 +47,36 @@ class Database
         $sql = <<<'SQL'
         SELECT * FROM Percelen AS p
         INNER JOIN Boerenbedrijf b on b.Bedrijf_ID = p.Bedrijf_ID
-        ORDER BY Straatnaam
+        ORDER BY b.Naam_Eigenaar, Straatnaam
 SQL;
 
         $sth = $this->conn->prepare($sql);
         $sth->execute();
         
         return $sth->fetchAll();
+    }
+
+    function haalGewassenOp(): array
+    {
+        $sth = $this->conn->prepare("SELECT * FROM Gewassen ORDER BY Gewasgroep");
+        $sth->execute();
+
+        return $sth->fetchAll();
+    }
+
+    function haalGeteeldeGewassenOp(): array
+    {
+        $sql = <<<'SQL'
+        SELECT gg.Teeltjaar, b.Naam_Eigenaar, gg.Gewasgroep, p.Straatnaam, gg.Totaal_Opbrengst, gg.Bijzonderheden FROM Geteelde_Gewassen AS gg
+        INNER JOIN Percelen p on gg.Perceel_ID = p.Perceel_ID
+        INNER JOIN Gewassen gw ON gw.Gewasgroep = gg.Gewasgroep
+        INNER JOIN Boerenbedrijf b on b.Bedrijf_ID = p.Bedrijf_ID
+        ORDER BY gg.Teeltjaar DESC, b.Naam_Eigenaar, gg.Gewasgroep, p.Straatnaam, gg.Totaal_Opbrengst, gg.Bijzonderheden
+SQL;
+
+        $sth = $this->conn->prepare($sql);
+        $sth->execute();
+        
+        return $sth->fetchAll();  
     }
 }

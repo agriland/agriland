@@ -87,8 +87,8 @@ tr:hover {background-color: #24c6d1;}
             foreach ($percelen as $perceel) {
             ?>
                 <tr>
-                    <td><?php echo $perceel["Naam_Eigenaar"] ?></td>
-                    <td><?php echo $perceel["Straatnaam"] ?></td>
+                    <td><?php echo htmlspecialchars($perceel["Naam_Eigenaar"]) ?></td>
+                    <td><?php echo htmlspecialchars($perceel["Straatnaam"]) ?></td>
                     <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
                 </tr>
             <?php
