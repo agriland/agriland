@@ -48,7 +48,7 @@ if ($_POST["perceel"] != "" &&
             foreach ($gewassen as $gewas) {
                 $gewasgroep = $gewas["Gewasgroep"];
                 $gemiddeldeOpbrengst = $gewas["Gemiddelde_Opbrengst"];
-                echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst: " . $gemiddeldeOpbrengst . ")" . "</option>";
+                echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst(ton/ha): " . $gemiddeldeOpbrengst . ")" . "</option>";
             }
             ?>
         </select>
