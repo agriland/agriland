@@ -1,14 +1,6 @@
-<?php
-
-include 'database/database.inc.php';
-
-$db_conn = new Database();
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="nl">
+<a href="/index.php"><br></a>
 
 <head>
     <meta charset="UTF-8">
@@ -40,6 +32,16 @@ $db_conn = new Database();
     </style>
 </head>
 
+<style>
+body {
+  background-image: url('https://images.unsplash.com/photo-1497092801449-b782257c9756?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 110%;
+}
+</style>
+
+
 <body>
     <nav class="navbar" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
@@ -54,7 +56,7 @@ $db_conn = new Database();
             </a>
         </div>
 
-        <div id="navbarBasicExample" class="navbar-menu">
+<div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
                 <a class="navbar-item" href="/">Home</a>
                 <a class="navbar-item" href="/perceel.php">Perceel toevoegen</a>
@@ -65,39 +67,5 @@ $db_conn = new Database();
         </div>
     </nav>
 
-
-
-
-<style>
-body {
-  background-image: url('https://images.unsplash.com/photo-1497092801449-b782257c9756?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 110%;
-}
-</style>
-
-
-
-
-
-    <div class="content">
-
-    <div>
-    <h1 ALIGN="center">AGRILAND</h1>
-    <div>
-
-    <div>
-    Agriland staat voor overzicht en duurzaamheid. Op Agriland kunt u, door<br />
-    gebruik te maken van onze database, uw opbrengsten per gewas bijhouden.<br />
-    Hierdoor heeft u duidelijk inzicht in het rendement van uw gewassen.<br />
-    Ook is er de mogelijkheid om opbrengsten te vergelijken met verschillende jaren.<br />
-    Hierdoor kunt u streven naar de optimale winst van uw perceel.
-    </div>
-    
-    
-
-    </div>
-</body>
-
-</html>
+Deze site is gemaakt door:<br> Rutger Broekhoff, Tom van den Dorpel en Robert Wieringa<br/>
+<img src="Rutger.jpg"><img src="Tom.jpg"><img src="Robert.jpg">
