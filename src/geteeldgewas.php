@@ -1,4 +1,10 @@
-<?php
+<a href="/index.php"><img src="Agriland.jpg"><br></a>
+<style> 
+ img {
+     max-width:80px;
+ }
+ </style>
+ <?php
 
 include 'database/database.inc.php';
 
@@ -48,7 +54,7 @@ if ($_POST["perceel"] != "" &&
             foreach ($gewassen as $gewas) {
                 $gewasgroep = $gewas["Gewasgroep"];
                 $gemiddeldeOpbrengst = $gewas["Gemiddelde_Opbrengst"];
-                echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst: " . $gemiddeldeOpbrengst . ")" . "</option>";
+                echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst(ton/ha): " . $gemiddeldeOpbrengst . ")" . "</option>";
             }
             ?>
         </select>

@@ -36,6 +36,15 @@ class Database
         return $sth->fetchAll();
     }
 
+function voegBedrijvenToe(int $BedrijfID, string $NaamEigenaar, string $VoornaamEigenaar, string $Geslacht, string $Geboortedatum, 
+    string $Adres, string $Postcode, string $Telefoonnummer, string $Email,string $Vestigingsplaats)
+    {
+        $sth = $this->conn->prepare("INSERT INTO Boerenbedrijf (Naam_Eigenaar, Voornaam_Eigenaar, Geslacht, Geboortedatum, Adres, Postcode,
+        Telefoonnummer, Email, Vestigingsplaats) VALUES (?, ?, ?. ?, ?, ?, ?, ?, ?, ?)");
+        $sth->execute([$NaamEigenaar, $VoornaamEigenaar, $Geslacht, $Geboortedatum, 
+    $Adres, $Postcode, $Telefoonnummer, $Email, $Vestigingsplaats]);
+    }
+
     function voegPerceelToe(int $bedrijfID, float $oppervlakte, string $straatnaam)
     {
         $sth = $this->conn->prepare("INSERT INTO Percelen (Bedrijf_ID, Oppervlakte, Straatnaam) VALUES (?, ?, ?)");

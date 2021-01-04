@@ -83,3 +83,9 @@ $db_conn = new Database();
 <DIV ALIGN="center"><img src="https://images1.persgroep.net/rcs/0Uaav2_L3cw4Fu__UnpjAA9wq5k/diocontent/131294043/_fitwidth/694/?appId=21791a8992982cd8da851550a453bd7f&quality=0.8"/>
 </body>
 </html>
+<img src="Agriland.jpg">
+<style> 
+img {
+    max-width: 380px;
+    float:centre;
+}
