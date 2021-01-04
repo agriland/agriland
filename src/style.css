@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    font-family: 'Arial';
+    font-weight: 300;
+}
+    
+header {
+    background-color: crimson;
+}    
+
+nav ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+
+
+nav li {
+float : left;
+display: inline-block;
+margin-left: 250px;
+}
+
+header {
+    background-color: brown;
+}   
+
+
