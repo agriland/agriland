@@ -1,4 +1,10 @@
-<?php
+<a href="/index.php"><img src="Agriland.jpg"><br></a>
+<style> 
+ img {
+     max-width:80px;
+ }
+ </style>
+ <?php
 
 include 'database/database.inc.php';
 

@@ -1,4 +1,10 @@
-<?php
+<a href="/index.php"><img src="Agriland.jpg"><br></a>
+<style> 
+ img {
+     max-width:80px;
+ }
+ </style>
+ <?php
 
 include 'database/database.inc.php';
 
@@ -25,7 +31,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
     label {
         float: left;
         display: block;
-        width: 100px;
+        width: 120px;
     }
     </style>
 </head>
@@ -34,7 +40,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
 
     <h2>Perceel toevoegen</h2>
     <form method="POST">
-        <label for="oppervlakte">Oppervlakte</label>
+        <label for="oppervlakte">Oppervlakte(ha)</label>
         <input type="number" step="0.1" name="oppervlakte" />
         <br />
 

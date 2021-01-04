@@ -1,3 +1,9 @@
+<a href="/index.php"><img src="Agriland.jpg"><br></a>
+<style> 
+ img {
+     max-width:80px;
+ }
+</style>
 <?php
 
 include 'database/database.inc.php';
@@ -25,7 +31,7 @@ if ($_POST["Bedrijf_ID"] != "" &&
     $Email = filter_input(INPUT_POST, "Email", FILTER_SANITIZE_STRING);
     $Vestigingsplaats = filter_input(INPUT_POST, "Vestigingsplaats", FILTER_SANITIZE_STRING);
 
-    $db_conn->voegBedrijfToe($BedrijfID, $NaamEigenaar, $VoornaamEigenaar, $Geslacht, $Geboortedatum, 
+    $db_conn->voegBedrijvenToe($BedrijfID, $NaamEigenaar, $VoornaamEigenaar, $Geslacht, $Geboortedatum, 
     $Adres, $Postcode, $Telefoonnummer, $Email, $Vestigingsplaats);
 }
 

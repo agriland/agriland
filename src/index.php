@@ -22,16 +22,16 @@ $db_conn = new Database();
     <nav>
         <ul>
             <li>
-                <a href="/perceel.php">Perceel toevoegen<br></a>
-            </li>
-            <li>
-                <a href="/geteeldgewas.php">Teelt toevoegen<br></a>
-            </li>
-            <li>
                 <a href="/bedrijf.php">Bedrijf toevoegen<br></a>
             </li>
             <li>
-                <a href="/geteeldgewas.php">Gewas toevoegen<br><br></a>
+                <a href="/perceel.php">Perceel toevoegen<br></a>
+            </li>
+            <li>
+               <a href="/geteeldgewas.php">Teelt toevoegen<br></a> 
+            </li>
+            <li>
+                <a href="/gewas.php">Gewas toevoegen<br><br></a>
             </li>
             <li>
                 <a href="/over.php">Over deze site</a>
@@ -40,3 +40,9 @@ $db_conn = new Database();
     </nav>
 </body>
 </html>
+<img src="Agriland.jpg">
+<style> 
+img {
+    max-width: 380px;
+    float:centre;
+}
