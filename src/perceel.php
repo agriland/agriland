@@ -31,6 +31,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
 </head>
 <body>
     <h1>Percelen</h1>
+    
 
     <h2>Perceel toevoegen</h2>
     <form method="POST">
