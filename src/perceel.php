@@ -73,7 +73,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
     </form>
 
     <h2>Percelen</h2>
-    <table class="table">
+    <table class="table is-hoverable">
         <thead>
             <tr>
                 <th>Naam eigenaar</th>

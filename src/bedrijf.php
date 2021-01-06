@@ -106,7 +106,7 @@ if ($_POST["Bedrijf_ID"] != "" &&
     </form>
 
     <h2>Bedrijven</h2>
-    <table class="table">
+    <table class="table is-hoverable">
         <thead>
             <tr>
                 <th>Naam eigenaar</th>

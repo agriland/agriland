@@ -52,18 +52,22 @@ if ($_POST["perceel"] != "" &&
 
     <h2>Geteeld gewas toevoegen</h2>
     <form method="POST">
-        <label for="gewasgroep">Gewasgroep</label>
-        <select name="gewasgroep">
-            <?php 
+        <div class="field">
+            <label for="gewasgroep" class="label">Gewasgroep</label>
+            <div class="control">
+                <select name="gewasgroep" class="input">
+                    <?php 
 
-            $gewassen = $db_conn->haalGewassenOp();
-            foreach ($gewassen as $gewas) {
-                $gewasgroep = $gewas["Gewasgroep"];
-                $gemiddeldeOpbrengst = $gewas["Gemiddelde_Opbrengst"];
-                echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst(ton/ha): " . $gemiddeldeOpbrengst . ")" . "</option>";
-            }
-            ?>
-        </select>
+                    $gewassen = $db_conn->haalGewassenOp();
+                    foreach ($gewassen as $gewas) {
+                        $gewasgroep = $gewas["Gewasgroep"];
+                        $gemiddeldeOpbrengst = $gewas["Gemiddelde_Opbrengst"];
+                        echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst(ton/ha): " . $gemiddeldeOpbrengst . ")" . "</option>";
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
         <br />
 
         <label for="teeltjaar">Teeltjaar</label>
@@ -99,7 +103,7 @@ if ($_POST["perceel"] != "" &&
     </form>
 
     <h2>Percelen</h2>
-    <table class="table">
+    <table class="table is-hoverable">
         <thead>
             <tr>
                 <th>Teeltjaar</th>
