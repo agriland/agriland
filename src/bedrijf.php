@@ -106,18 +106,7 @@ if ($_POST["Bedrijf_ID"] != "" &&
     </form>
 
     <h2>Bedrijven</h2>
-    <table>
-<style>
-th, td {
-  padding: 5px;
-  text-align: left;
-}
-
-th{background-color: #ffffff;}
-tr:nth-child(odd) {background-color: #00f50c;}
-tr:nth-child(even) {background-color: #f50000;}
-tr:hover {background-color: #24c6d1;}
-    </style>
+    <table class="table">
         <thead>
             <tr>
                 <th>Naam eigenaar</th>

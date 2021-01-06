@@ -47,7 +47,7 @@ if ($_POST["perceel"] != "" &&
 </head>
 <body>
     <?php include 'header.inc.php' ?>
-    
+
     <h1>Geteelde gewassen</h1>
 
     <h2>Geteeld gewas toevoegen</h2>
@@ -99,7 +99,7 @@ if ($_POST["perceel"] != "" &&
     </form>
 
     <h2>Percelen</h2>
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Teeltjaar</th>
