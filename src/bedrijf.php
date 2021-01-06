@@ -1,9 +1,3 @@
-<a href="/index.php"><img src="Agriland.jpg"><br></a>
-<style> 
- img {
-     max-width:80px;
- }
-</style>
 <?php
 
 include 'database/database.inc.php';
@@ -40,9 +34,8 @@ if ($_POST["Bedrijf_ID"] != "" &&
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agriland &middot; Bedrijf toevoegen</title>
+    <title>Bedrijf toevoegen &middot; Agriland</title>
+    <?php include 'head.inc.php' ?>
 
     <style>
     label {
@@ -53,6 +46,8 @@ if ($_POST["Bedrijf_ID"] != "" &&
     </style>
 </head>
 <body>
+    <?php include 'header.inc.php' ?>
+
     <h1>Bedrijven</h1>
 
     <h2>Bedrijf toevoegen</h2>
