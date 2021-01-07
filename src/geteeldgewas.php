@@ -30,12 +30,6 @@ if (
     <?php include 'head.inc.php' ?>
 
     <style>
-        /* label {
-            float: left;
-            display: block;
-            width: 150px;
-        } */
-
         img {
             max-width: 80px;
         }
@@ -127,7 +121,7 @@ if (
             <br />
 
             <h2 class="is-size-3">Percelen</h2>
-            <table class="table is-hoverable">
+            <table class="table is-striped is-hoverable is-fullwidth">
                 <thead>
                     <tr>
                         <th>Teeltjaar</th>

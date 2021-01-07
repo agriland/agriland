@@ -4,8 +4,9 @@ include 'database/database.inc.php';
 
 $db_conn = new Database();
 
-if ($_POST["Bedrijf_ID"] != "" && 
-    $_POST["Naam_Eigenaar"] != "" && 
+if (
+    $_POST["Bedrijf_ID"] != "" &&
+    $_POST["Naam_Eigenaar"] != "" &&
     $_POST["Voornaam_Eigenaar"] != "" &&
     $_POST["Geslacht"] != "" &&
     $_POST["Geboortedatum"] != "" &&
@@ -13,7 +14,8 @@ if ($_POST["Bedrijf_ID"] != "" &&
     $_POST["Postcode"] != "" &&
     $_POST["Telefoonnummer"] != "" &&
     $_POST["Email"] != "" &&
-    $_POST["Vestigingsplaats"] != "") {
+    $_POST["Vestigingsplaats"] != ""
+) {
     $BedrijfID = filter_input(INPUT_POST, "Bedrijf", FILTER_SANITIZE_NUMBER_INT);
     $NaamEigenaar = filter_input(INPUT_POST, "NaamEigenaar", FILTER_SANITIZE_STRING);
     $VoornaamEigenaar = filter_input(INPUT_POST, "VoorNaamEigenaar", FILTER_SANITIZE_STRING);
@@ -25,112 +27,161 @@ if ($_POST["Bedrijf_ID"] != "" &&
     $Email = filter_input(INPUT_POST, "Email", FILTER_SANITIZE_STRING);
     $Vestigingsplaats = filter_input(INPUT_POST, "Vestigingsplaats", FILTER_SANITIZE_STRING);
 
-    $db_conn->voegBedrijvenToe($BedrijfID, $NaamEigenaar, $VoornaamEigenaar, $Geslacht, $Geboortedatum, 
-    $Adres, $Postcode, $Telefoonnummer, $Email, $Vestigingsplaats);
+    $db_conn->voegBedrijvenToe(
+        $BedrijfID,
+        $NaamEigenaar,
+        $VoornaamEigenaar,
+        $Geslacht,
+        $Geboortedatum,
+        $Adres,
+        $Postcode,
+        $Telefoonnummer,
+        $Email,
+        $Vestigingsplaats
+    );
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <title>Bedrijf toevoegen &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 
     <style>
-    label {
-        float: left;
-        display: block;
-        width: 150px;
-    }
+        #form-container {
+            width: 50%;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
     </style>
 </head>
+
 <body>
     <?php include 'header.inc.php' ?>
 
-    <h1>Bedrijven</h1>
+    <div class="container" id="form-container">
+        <div class="notification">
+            <h1 class="is-size-2">Bedrijven</h1>
 
-    <h2>Bedrijf toevoegen</h2>
-    <form method="POST">
-        <label for="NaamEigenaar">Naam eigenaar</label>
-        <input type="text" name="NaamE1igenaar" />
-        <br />
+            <h2 class="is-size-3">Bedrijf toevoegen</h2>
+            <form method="POST">
+                <div class="field">
+                    <label for="NaamEigenaar" class="label">Naam eigenaar</label>
+                    <div class="control">
+                        <input type="text" name="NaamE1igenaar" class="input" />
+                    </div>
+                </div>
 
-        <label for="VoornaamEigenaar">Voornaam eigenaar</label>
-        <input type="text" name="VoornaamEigenaar" />
-        <br />
+                <div class="field">
+                    <label for="VoornaamEigenaar" class="label">Voornaam eigenaar</label>
+                    <div class="control">
+                        <input type="text" name="VoornaamEigenaar" class="input" />
+                    </div>
+                </div>
 
-        <label for="Geslacht">Man</label>
-        <input type="radio" name="Geslacht" />
-        <label for="Geslacht">Vrouw</label>
-        <input type="radio" name="Geslacht" />
-        <br />
+                <div class="field">
+                    <label for="Geslacht" class="label">Man</label>
+                    <div class="control">
+                        <input type="radio" name="Geslacht" class="input" />
+                    </div>
+                    <label for="Geslacht" class="label">Vrouw</label>
+                    <div class="control">
+                        <input type="radio" name="Geslacht" class="input" />
+                    </div>
+                </div>
 
-        <label for="Geboortedatum">Geboortedatum</label>
-        <input type="text" name="Geboortedatum" value="yyyy-mm-dd" />
-        <br />
+                <div class="field">
+                    <label for="Geboortedatum" class="label">Geboortedatum</label>
+                    <div class="control">
+                        <input type="text" name="Geboortedatum" placeholder="yyyy-mm-dd" class="input" />
+                    </div>
+                </div>
 
-        <label for="Adres">Adres</label>
-        <input type="text" name="Adres" />
-        <br />
+                <div class="field">
+                    <label for="Adres" class="label">Adres</label>
+                    <div class="control">
+                        <input type="text" name="Adres" class="input" />
+                    </div>
+                </div>
 
-        <label for="Postcode">Postcode</label>
-        <input type="text" name="Postcode" value="1234AB"/>
-        <br />
+                <div class="field">
+                    <label for="Postcode" class="label">Postcode</label>
+                    <div class="control">
+                        <input type="text" name="Postcode" value="1234AB" class="input" />
+                    </div>
+                </div>
 
-        <label for="Telefoonnummer">Telefoonnummer</label>
-        <input type="text" name="Telefoonnummer" />
-        <br />
+                <div class="field">
+                    <label for="Telefoonnummer" class="label">Telefoonnummer</label>
+                    <div class="control">
+                        <input type="text" name="Telefoonnummer" class="input" />
+                    </div>
+                </div>
 
-        <label for="Email">Email</label>
-        <input type="text" name="Email" />
-        <br />
+                <div class="field">
+                    <label for="Email" class="label">Email</label>
+                    <div class="control">
+                        <input type="text" name="Email" class="input" />
+                    </div>
+                </div>
 
-        <label for="Vestigingsplaats">Vestigingsplaats</label>
-        <input type="text" name="Vestigingsplaats" />
-        <br />
-        
-            <?php 
+                <div class="field">
+                    <label for="Vestigingsplaats" class="label">Vestigingsplaats</label>
+                    <div class="control">
+                        <input type="text" name="Vestigingsplaats" class="input" />
+                    </div>
+                </div>
 
-            $bedrijven = $db_conn->haalBedrijvenOp();
-            foreach ($bedrijven as $bedrijf) {
-                $id = $bedrijf["Bedrijf_ID"];
-                $naamEigenaar = $bedrijf["Naam_Eigenaar"];
-                #echo "<option value=\"" . $id . "\">" . $naamEigenaar . " - " . $id . "</option>";
-            }
-            ?>
-        </select>
-        <br />
+                <?php
 
-        <input type="submit" value="Toevoegen" />
-    </form>
+                $bedrijven = $db_conn->haalBedrijvenOp();
+                foreach ($bedrijven as $bedrijf) {
+                    $id = $bedrijf["Bedrijf_ID"];
+                    $naamEigenaar = $bedrijf["Naam_Eigenaar"];
+                    #echo "<option value=\"" . $id . "\">" . $naamEigenaar . " - " . $id . "</option>";
+                }
+                ?>
+                </select>
 
-    <h2>Bedrijven</h2>
-    <table class="table is-hoverable">
-        <thead>
-            <tr>
-                <th>Naam eigenaar</th>
-                <th>Adres</th>
-                <th>Telefoonnummer</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+                <div class="control">
+                    <input type="submit" value="Toevoegen" class="button is-primary" />
+                </div>
+            </form>
 
-            $Bedrijven = $db_conn->haalBedrijvenOp();
+            <br />
+            <h2 class="is-size-3">Bedrijven</h2>
+            <table class="table is-striped is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th>Naam eigenaar</th>
+                        <th>Voornaam eigenaar</th>
+                        <th>Adres</th>
+                        <th>Telefoonnummer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-            foreach ($Bedrijven as $Bedrijf) {
-            ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($Bedrijf["Naam_Eigenaar"]) ?></td>
-                    <td><?php echo htmlspecialchars($Bedrijf["Voornaam_Eigenaar"]) ?></td>
-                    <td><?php echo htmlspecialchars($Bedrijf["Adres"]) ?></td>
-                    <td><?php echo htmlspecialchars($Bedrijf["Telefoonnummer"]) ?></td>
-                </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
+                    $Bedrijven = $db_conn->haalBedrijvenOp();
+
+                    foreach ($Bedrijven as $Bedrijf) {
+                    ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($Bedrijf["Naam_Eigenaar"]) ?></td>
+                            <td><?php echo htmlspecialchars($Bedrijf["Voornaam_Eigenaar"]) ?></td>
+                            <td><?php echo htmlspecialchars($Bedrijf["Adres"]) ?></td>
+                            <td><?php echo htmlspecialchars($Bedrijf["Telefoonnummer"]) ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
