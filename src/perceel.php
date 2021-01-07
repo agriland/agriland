@@ -16,87 +16,105 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
 
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <title>Perceel toevoegen &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 
     <style>
-    label {
-        float: left;
-        display: block;
-        width: 120px;
-    }
-        
-    body {
-        background-image: url('https://images.unsplash.com/photo-1497092801449-b782257c9756?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 110%;
-    }
+        label {
+            float: left;
+            display: block;
+            width: 120px;
+        }
 
-    img {
-        max-width:80px;
-    }
+        img {
+            max-width: 80px;
+        }
+
+        #form-container {
+            width: 50%;
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
     </style>
 </head>
 
 <body>
     <?php include 'header.inc.php' ?>
 
-    <h1>Percelen</h1>
-    
-    <h2>Perceel toevoegen</h2>
-    <form method="POST">
-        <label for="oppervlakte">Oppervlakte(ha)</label>
-        <input type="number" step="0.1" name="oppervlakte" />
-        <br />
+    <div class="container" id="form-container">
+        <div class="notification">
+            <h1 class="is-size-2">Percelen</h1>
 
-        <label for="straatnaam">Straatnaam</label>
-        <input type="text" name="straatnaam" />
-        <br />
+            <h2 class="is-size-3">Perceel toevoegen</h2>
+            <form method="POST">
+                <div class="field">
+                    <label for="oppervlakte" class="label">Oppervlakte(ha)</label>
+                    <div class="control">
+                        <input type="number" step="0.1" name="oppervlakte" class="input" />
+                    </div>
+                </div>
 
-        <label for="bedrijf">Bedrijf</label>
-        <select name="bedrijf">
-            <?php 
+                <div class="field">
+                    <label for="straatnaam" class="label">Straatnaam</label>
+                    <div class="control">
+                        <input type="text" name="straatnaam" class="input" />
+                    </div>
+                </div>
 
-            $bedrijven = $db_conn->haalBedrijvenOp();
-            foreach ($bedrijven as $bedrijf) {
-                $id = $bedrijf["Bedrijf_ID"];
-                $naamEigenaar = $bedrijf["Naam_Eigenaar"];
-                echo "<option value=\"" . $id . "\">" . $naamEigenaar . " - " . $id . "</option>";
-            }
-            ?>
-        </select>
-        <br />
+                <div class="field">
+                    <label for="bedrijf" class="label">Bedrijf</label>
+                    <div class="control">
+                        <div class="select">
+                            <select name="bedrijf">
+                                <?php
 
-        <input type="submit" value="Toevoegen" />
-    </form>
+                                $bedrijven = $db_conn->haalBedrijvenOp();
+                                foreach ($bedrijven as $bedrijf) {
+                                    $id = $bedrijf["Bedrijf_ID"];
+                                    $naamEigenaar = $bedrijf["Naam_Eigenaar"];
+                                    echo "<option value=\"" . $id . "\">" . $naamEigenaar . " - " . $id . "</option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-    <h2>Percelen</h2>
-    <table class="table is-hoverable">
-        <thead>
-            <tr>
-                <th>Naam eigenaar</th>
-                <th>Straatnaam</th>
-                <th>Oppervlakte</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+                <div class="control">
+                    <input type="submit" value="Toevoegen" class="button is-primary" />
+                </div>
+            </form>
 
-            $percelen = $db_conn->haalPercelenOp();
+            <h2 class="is-size-2">Percelen</h2>
+            <table class="table is-hoverable">
+                <thead>
+                    <tr>
+                        <th>Naam eigenaar</th>
+                        <th>Straatnaam</th>
+                        <th>Oppervlakte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-            foreach ($percelen as $perceel) {
-            ?>
-                <tr>
-                    <td><?php echo htmlspecialchars($perceel["Naam_Eigenaar"]) ?></td>
-                    <td><?php echo htmlspecialchars($perceel["Straatnaam"]) ?></td>
-                    <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
-                </tr>
-            <?php
-            }
-            ?>
-        </tbody>
-    </table>
+                    $percelen = $db_conn->haalPercelenOp();
+
+                    foreach ($percelen as $perceel) {
+                    ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($perceel["Naam_Eigenaar"]) ?></td>
+                            <td><?php echo htmlspecialchars($perceel["Straatnaam"]) ?></td>
+                            <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
+
 </html>
