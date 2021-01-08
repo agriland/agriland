@@ -17,7 +17,7 @@ if (
     $totaalOpbrengst = filter_input(INPUT_POST, "totaal_opbrengst", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $bijzonderheden = filter_input(INPUT_POST, "bijzonderheden", FILTER_SANITIZE_STRING);
 
-    $db_conn->voegPerceelToe($perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden);
+    $db_conn->voegGeteeldGewasToe($perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden);
 }
 
 ?>
@@ -115,37 +115,39 @@ if (
             <br />
 
             <h2 class="is-size-3">Percelen</h2>
-            <table class="table is-striped is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>Teeltjaar</th>
-                        <th>Naam eigenaar</th>
-                        <th>Gewas</th>
-                        <th>Straatnaam</th>
-                        <th>Totaalopbrengst</th>
-                        <th>Bijzonderheden</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-
-                    $gewassen = $db_conn->haalGeteeldeGewassenOp();
-
-                    foreach ($gewassen as $gewas) {
-                    ?>
+            <div class="table-container">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
                         <tr>
-                            <td><?php echo $gewas["Teeltjaar"] ?></td>
-                            <td><?php echo htmlspecialchars($gewas["Naam_Eigenaar"]) ?></td>
-                            <td><?php echo htmlspecialchars($gewas["Gewasgroep"]) ?></td>
-                            <td><?php echo htmlspecialchars($gewas["Straatnaam"]) ?></td>
-                            <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . ")" ?></td>
-                            <td><?php echo htmlspecialchars($gewas["Bijzonderheden"]) ?></td>
+                            <th>Teeltjaar</th>
+                            <th>Naam eigenaar</th>
+                            <th>Gewas</th>
+                            <th>Straatnaam</th>
+                            <th>Totaalopbrengst</th>
+                            <th>Bijzonderheden</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        $gewassen = $db_conn->haalGeteeldeGewassenOp();
+
+                        foreach ($gewassen as $gewas) {
+                        ?>
+                            <tr>
+                                <td><?php echo $gewas["Teeltjaar"] ?></td>
+                                <td><?php echo htmlspecialchars($gewas["Naam_Eigenaar"]) ?></td>
+                                <td><?php echo htmlspecialchars($gewas["Gewasgroep"]) ?></td>
+                                <td><?php echo htmlspecialchars($gewas["Straatnaam"]) ?></td>
+                                <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . ")" ?></td>
+                                <td><?php echo htmlspecialchars($gewas["Bijzonderheden"]) ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>

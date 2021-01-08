@@ -88,4 +88,13 @@ SQL;
         
         return $sth->fetchAll();  
     }
+
+    function voegGeteeldGewasToe(int $perceelID, string $gewasgroep, int $teeltjaar, float $totaalOpbrengst, string $bijzonderheden) {
+        $sql = <<<'SQL'
+        INSERT INTO Geteelde_Gewassen (Perceel_ID, Gewasgroep, Teeltjaar, Totaal_Opbrengst, Bijzonderheden)
+        VALUES (?, ?, ?, ?, ?)
+SQL;
+        $sth = $this->conn->prepare($sql);
+        $sth->execute([$perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden]);
+    }
 }

@@ -83,31 +83,33 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             <br />
 
             <h2 class="is-size-2">Percelen</h2>
-            <table class="table is-striped is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>Naam eigenaar</th>
-                        <th>Straatnaam</th>
-                        <th>Oppervlakte</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-
-                    $percelen = $db_conn->haalPercelenOp();
-
-                    foreach ($percelen as $perceel) {
-                    ?>
+            <div class="table-container">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
                         <tr>
-                            <td><?php echo htmlspecialchars($perceel["Naam_Eigenaar"]) ?></td>
-                            <td><?php echo htmlspecialchars($perceel["Straatnaam"]) ?></td>
-                            <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
+                            <th>Naam eigenaar</th>
+                            <th>Straatnaam</th>
+                            <th>Oppervlakte</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        $percelen = $db_conn->haalPercelenOp();
+
+                        foreach ($percelen as $perceel) {
+                        ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($perceel["Naam_Eigenaar"]) ?></td>
+                                <td><?php echo htmlspecialchars($perceel["Straatnaam"]) ?></td>
+                                <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
