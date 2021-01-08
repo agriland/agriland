@@ -1,33 +1,36 @@
 body {
     margin: 0;
     font-family: 'Arial';
-    font-weight: 300;
-}
-    
-header {
-    background-color: crimson;
-}    
-
-nav ul {
-margin: 0;
-padding: 0;
-list-style: none;
+    /* font-weight: 300; */
 }
 
-
-nav li {
-float : left;
-display: inline-block;
-margin-left: 250px;
+@media screen and (min-width: 1024px) {
+    .form-container {
+        max-width: 840px !important;
+        margin-top: 60px !important;
+        margin-bottom: 60px !important;
+    }
 }
 
-header {
-    background-color: brown;
-}   
+@media screen and (max-width: 1024px) {
+    .form-container {
+        width: 100%;
+    }
 
-
-.jaap {
-    width: 1000%;
-    height: 5220%;
+    #form-container-bg {
+        border-radius: 0px !important;
+    }
 }
 
+html {
+    background-image: url('https://images.unsplash.com/photo-1497092801449-b782257c9756?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    width: 100%;
+}
+
+body {
+    width: 100%;
+}

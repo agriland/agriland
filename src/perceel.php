@@ -31,20 +31,14 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
         img {
             max-width: 80px;
         }
-
-        #form-container {
-            width: 50%;
-            margin-top: 60px;
-            margin-bottom: 60px;
-        }
     </style>
 </head>
 
 <body>
     <?php include 'header.inc.php' ?>
 
-    <div class="container" id="form-container">
-        <div class="notification">
+    <div class="container form-container">
+        <div class="notification form-container-bg">
             <h1 class="is-size-2">Percelen</h1>
 
             <h2 class="is-size-3">Perceel toevoegen</h2>

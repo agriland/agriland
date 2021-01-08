@@ -14,9 +14,9 @@
     <div id="navbarMenu" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="/">Home</a>
-            <a class="navbar-item" href="/perceel.php">Perceel toevoegen</a>
-            <a class="navbar-item" href="/geteeldgewas.php">Gewas toevoegen</a>
-            <a class="navbar-item" href="/bedrijf.php">Bedrijf toevoegen</a>
+            <a class="navbar-item" href="/perceel.php">Percelen</a>
+            <a class="navbar-item" href="/geteeldgewas.php">Gewassen</a>
+            <a class="navbar-item" href="/bedrijf.php">Bedrijven</a>
             <a class="navbar-item" href="/overons.php">Over ons</a>
             <a class="navbar-item" href="/contact.php">Contact</a>
         </div>

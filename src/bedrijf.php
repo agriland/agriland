@@ -49,21 +49,13 @@ if (
 <head>
     <title>Bedrijf toevoegen &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
-
-    <style>
-        #form-container {
-            width: 50%;
-            margin-top: 60px;
-            margin-bottom: 60px;
-        }
-    </style>
 </head>
 
 <body>
     <?php include 'header.inc.php' ?>
 
-    <div class="container" id="form-container">
-        <div class="notification">
+    <div class="container form-container">
+        <div class="notification form-container-bg">
             <h1 class="is-size-2">Bedrijven</h1>
 
             <h2 class="is-size-3">Bedrijf toevoegen</h2>
@@ -82,15 +74,16 @@ if (
                     </div>
                 </div>
 
-                <div class="field">
-                    <label for="Geslacht" class="label">Man</label>
-                    <div class="control">
-                        <input type="radio" name="Geslacht" class="input" />
-                    </div>
-                    <label for="Geslacht" class="label">Vrouw</label>
-                    <div class="control">
-                        <input type="radio" name="Geslacht" class="input" />
-                    </div>
+                <div class="control">
+                    <label class="label">Geslacht</label>
+                    <label for="Geslacht" class="radio">
+                        <input type="radio" name="Geslacht" />
+                        Man
+                    </label>
+                    <label for="Geslacht" class="radio">
+                        <input type="radio" name="Geslacht" />
+                        Vrouw
+                    </label>
                 </div>
 
                 <div class="field">
@@ -110,7 +103,7 @@ if (
                 <div class="field">
                     <label for="Postcode" class="label">Postcode</label>
                     <div class="control">
-                        <input type="text" name="Postcode" value="1234AB" class="input" />
+                        <input type="text" name="Postcode" placeholder="1234AB" class="input" />
                     </div>
                 </div>
 
@@ -153,33 +146,35 @@ if (
 
             <br />
             <h2 class="is-size-3">Bedrijven</h2>
-            <table class="table is-striped is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                        <th>Naam eigenaar</th>
-                        <th>Voornaam eigenaar</th>
-                        <th>Adres</th>
-                        <th>Telefoonnummer</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-
-                    $Bedrijven = $db_conn->haalBedrijvenOp();
-
-                    foreach ($Bedrijven as $Bedrijf) {
-                    ?>
+            <div class="table-container">
+                <table class="table is-striped is-hoverable is-fullwidth">
+                    <thead>
                         <tr>
-                            <td><?php echo htmlspecialchars($Bedrijf["Naam_Eigenaar"]) ?></td>
-                            <td><?php echo htmlspecialchars($Bedrijf["Voornaam_Eigenaar"]) ?></td>
-                            <td><?php echo htmlspecialchars($Bedrijf["Adres"]) ?></td>
-                            <td><?php echo htmlspecialchars($Bedrijf["Telefoonnummer"]) ?></td>
+                            <th>Naam eigenaar</th>
+                            <th>Voornaam eigenaar</th>
+                            <th>Adres</th>
+                            <th>Telefoonnummer</th>
                         </tr>
-                    <?php
-                    }
-                    ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php
+
+                        $Bedrijven = $db_conn->haalBedrijvenOp();
+
+                        foreach ($Bedrijven as $Bedrijf) {
+                        ?>
+                            <tr>
+                                <td><?php echo htmlspecialchars($Bedrijf["Naam_Eigenaar"]) ?></td>
+                                <td><?php echo htmlspecialchars($Bedrijf["Voornaam_Eigenaar"]) ?></td>
+                                <td><?php echo htmlspecialchars($Bedrijf["Adres"]) ?></td>
+                                <td><?php echo htmlspecialchars($Bedrijf["Telefoonnummer"]) ?></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </body>
