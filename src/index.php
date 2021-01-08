@@ -10,7 +10,7 @@ $db_conn = new Database();
 <html lang="nl">
 
 <head>
-    <title>Agriland &middot; Home</title>
+    <title>Home &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 
     <style>

@@ -3,5 +3,7 @@
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="bulma.min.css" rel="stylesheet" type="text/css" />
-
+<link rel="icon" 
+      type="image/png" 
+      href="Agriland.png">
 <script src="script.js"></script>
