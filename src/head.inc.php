@@ -3,3 +3,5 @@
 
 <link href="style.css" rel="stylesheet" type="text/css" />
 <link href="bulma.min.css" rel="stylesheet" type="text/css" />
+
+<script src="script.js"></script>
