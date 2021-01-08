@@ -8,13 +8,13 @@ if (
     $_POST["perceel"] != "" &&
     $_POST["gewasgroep"] != "" &&
     $_POST["teeltjaar"] != "" &&
-    $_POST["totaal_opbrengst"] != "" &&
+    $_POST["totaalopbrengst"] != "" &&
     $_POST["bijzonderheden"] != ""
 ) {
     $perceelID = filter_input(INPUT_POST, "perceel", FILTER_SANITIZE_NUMBER_INT);
     $gewasgroep = filter_input(INPUT_POST, "gewasgroep", FILTER_SANITIZE_STRING);
     $teeltjaar = filter_input(INPUT_POST, "teeltjaar", FILTER_SANITIZE_NUMBER_INT);
-    $totaalOpbrengst = filter_input(INPUT_POST, "totaal_opbrengst", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $totaalOpbrengst = filter_input(INPUT_POST, "totaalopbrengst", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $bijzonderheden = filter_input(INPUT_POST, "bijzonderheden", FILTER_SANITIZE_STRING);
 
     $db_conn->voegGeteeldGewasToe($perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden);
@@ -57,7 +57,7 @@ if (
                                 foreach ($gewassen as $gewas) {
                                     $gewasgroep = $gewas["Gewasgroep"];
                                     $gemiddeldeOpbrengst = $gewas["Gemiddelde_Opbrengst"];
-                                    echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst(ton/ha): " . $gemiddeldeOpbrengst . ")" . "</option>";
+                                    echo "<option value=\"" . $gewasgroep . "\">" . $gewasgroep . " (gemiddelde opbgrengst (ton/ha): " . $gemiddeldeOpbrengst . ")" . "</option>";
                                 }
                                 ?>
                             </select>
