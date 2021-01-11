@@ -5,39 +5,36 @@ include 'database/database.inc.php';
 $db_conn = new Database();
 
 if (
-    $_POST["Bedrijf_ID"] != "" &&
-    $_POST["Naam_Eigenaar"] != "" &&
-    $_POST["Voornaam_Eigenaar"] != "" &&
-    $_POST["Geslacht"] != "" &&
-    $_POST["Geboortedatum"] != "" &&
-    $_POST["Adres"] != "" &&
-    $_POST["Postcode"] != "" &&
-    $_POST["Telefoonnummer"] != "" &&
-    $_POST["Email"] != "" &&
-    $_POST["Vestigingsplaats"] != ""
+    $_POST["naam_eigenaar"] != "" &&
+    $_POST["voornaam_eigenaar"] != "" &&
+    $_POST["geslacht"] != "" &&
+    $_POST["geboortedatum"] != "" &&
+    $_POST["adres"] != "" &&
+    $_POST["postcode"] != "" &&
+    $_POST["telefoonnummer"] != "" &&
+    $_POST["email"] != "" &&
+    $_POST["vestigingsplaats"] != ""
 ) {
-    $BedrijfID = filter_input(INPUT_POST, "Bedrijf", FILTER_SANITIZE_NUMBER_INT);
-    $NaamEigenaar = filter_input(INPUT_POST, "NaamEigenaar", FILTER_SANITIZE_STRING);
-    $VoornaamEigenaar = filter_input(INPUT_POST, "VoorNaamEigenaar", FILTER_SANITIZE_STRING);
-    $Geslacht = filter_input(INPUT_POST, "Geslacht", FILTER_SANITIZE_STRING);
-    $Geboortedatum = filter_input(INPUT_POST, "Geboortedatum", FILTER_SANITIZE_STRING);
-    $Adres = filter_input(INPUT_POST, "Adres", FILTER_SANITIZE_STRING);
-    $Postcode = filter_input(INPUT_POST, "Postcode", FILTER_SANITIZE_STRING);
-    $Telefoonnummer = filter_input(INPUT_POST, "Telefoonnummer", FILTER_SANITIZE_NUMBER_INT);
-    $Email = filter_input(INPUT_POST, "Email", FILTER_SANITIZE_STRING);
-    $Vestigingsplaats = filter_input(INPUT_POST, "Vestigingsplaats", FILTER_SANITIZE_STRING);
+    $naamEigenaar = filter_input(INPUT_POST, "naam_eigenaar", FILTER_SANITIZE_STRING);
+    $voornaamEigenaar = filter_input(INPUT_POST, "voornaam_eigenaar", FILTER_SANITIZE_STRING);
+    $geslacht = filter_input(INPUT_POST, "geslacht", FILTER_SANITIZE_STRING);
+    $geboortedatum = filter_input(INPUT_POST, "geboortedatum", FILTER_SANITIZE_STRING);
+    $adres = filter_input(INPUT_POST, "adres", FILTER_SANITIZE_STRING);
+    $postcode = filter_input(INPUT_POST, "postcode", FILTER_SANITIZE_STRING);
+    $telefoonnummer = filter_input(INPUT_POST, "telefoonnummer", FILTER_SANITIZE_NUMBER_INT);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_STRING);
+    $vestigingsplaats = filter_input(INPUT_POST, "vestigingsplaats", FILTER_SANITIZE_STRING);
 
-    $db_conn->voegBedrijvenToe(
-        $BedrijfID,
-        $NaamEigenaar,
-        $VoornaamEigenaar,
-        $Geslacht,
-        $Geboortedatum,
-        $Adres,
-        $Postcode,
-        $Telefoonnummer,
-        $Email,
-        $Vestigingsplaats
+    $db_conn->voegBedrijfToe(
+        $naamEigenaar,
+        $voornaamEigenaar,
+        $geslacht,
+        $geboortedatum,
+        $adres,
+        $postcode,
+        $telefoonnummer,
+        $email,
+        $vestigingsplaats
     );
 }
 
@@ -61,70 +58,85 @@ if (
             <h2 class="is-size-3">Bedrijf toevoegen</h2>
             <form method="POST">
                 <div class="field">
-                    <label for="NaamEigenaar" class="label">Naam eigenaar</label>
+                    <label for="naam_eigenaar" class="label">Naam eigenaar</label>
                     <div class="control">
-                        <input type="text" name="NaamE1igenaar" class="input" />
+                        <input type="text" name="naam_eigenaar" class="input" />
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="VoornaamEigenaar" class="label">Voornaam eigenaar</label>
+                    <label for="voornaam_eigenaar" class="label">Voornaam eigenaar</label>
                     <div class="control">
-                        <input type="text" name="VoornaamEigenaar" class="input" />
+                        <input type="text" name="voornaam_eigenaar" class="input" />
                     </div>
                 </div>
 
                 <div class="control">
                     <label class="label">Geslacht</label>
-                    <label for="Geslacht" class="radio">
-                        <input type="radio" name="Geslacht" />
+                    <label for="geslacht" class="radio">
+                        <input type="radio" name="geslacht" value="m" />
                         Man
                     </label>
-                    <label for="Geslacht" class="radio">
-                        <input type="radio" name="Geslacht" />
+                    <label for="geslacht" class="radio">
+                        <input type="radio" name="geslacht" value="v" />
                         Vrouw
                     </label>
                 </div>
 
                 <div class="field">
-                    <label for="Geboortedatum" class="label">Geboortedatum</label>
+                    <label for="geboortedatum" class="label">Geboortedatum</label>
                     <div class="control">
-                        <input type="text" name="Geboortedatum" placeholder="yyyy-mm-dd" class="input" />
+                        <input type="date" id="start" name="geboortedatum" min="1900" max="<?php echo date('Y-m-d') ?>">
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="Adres" class="label">Adres</label>
-                    <div class="control">
-                        <input type="text" name="Adres" class="input" />
+                    <label for="vestigingsplaats" class="label">Vestigingsplaats</label>
+                    <div class="control has-icons-left">
+                        <input type="text" name="vestigingsplaats" class="input" />
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-city"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="Postcode" class="label">Postcode</label>
-                    <div class="control">
-                        <input type="text" name="Postcode" placeholder="1234AB" class="input" />
+                    <label for="adres" class="label">Adres</label>
+                    <div class="control has-icons-left">
+                        <input type="text" name="adres" class="input" />
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="Telefoonnummer" class="label">Telefoonnummer</label>
-                    <div class="control">
-                        <input type="text" name="Telefoonnummer" class="input" />
+                    <label for="postcode" class="label">Postcode</label>
+                    <div class="control has-icons-left">
+                        <input type="text" name="postcode" placeholder="1234AB" class="input" />
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-inbox"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="Email" class="label">Email</label>
-                    <div class="control">
-                        <input type="text" name="Email" class="input" />
+                    <label for="telefoonnummer" class="label">Telefoonnummer</label>
+                    <div class="control has-icons-left">
+                        <input type="text" name="telefoonnummer" class="input" />
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-phone"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
-                    <label for="Vestigingsplaats" class="label">Vestigingsplaats</label>
-                    <div class="control">
-                        <input type="text" name="Vestigingsplaats" class="input" />
+                    <label for="email" class="label">Email</label>
+                    <div class="control has-icons-left">
+                        <input type="email" name="email" class="input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                        </span>
                     </div>
                 </div>
 

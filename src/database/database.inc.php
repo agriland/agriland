@@ -36,13 +36,36 @@ class Database
         return $sth->fetchAll();
     }
 
-function voegBedrijvenToe(int $BedrijfID, string $NaamEigenaar, string $VoornaamEigenaar, string $Geslacht, string $Geboortedatum, 
-    string $Adres, string $Postcode, string $Telefoonnummer, string $Email,string $Vestigingsplaats)
-    {
-        $sth = $this->conn->prepare("INSERT INTO Boerenbedrijf (Naam_Eigenaar, Voornaam_Eigenaar, Geslacht, Geboortedatum, Adres, Postcode,
-        Telefoonnummer, Email, Vestigingsplaats) VALUES (?, ?, ?. ?, ?, ?, ?, ?, ?, ?)");
-        $sth->execute([$NaamEigenaar, $VoornaamEigenaar, $Geslacht, $Geboortedatum, 
-    $Adres, $Postcode, $Telefoonnummer, $Email, $Vestigingsplaats]);
+    function voegBedrijfToe(
+        string $NaamEigenaar,
+        string $VoornaamEigenaar,
+        string $Geslacht,
+        string $Geboortedatum,
+        string $Adres,
+        string $Postcode,
+        string $Telefoonnummer,
+        string $Email,
+        string $Vestigingsplaats
+    ) {
+        $sql = <<<'SQL'
+        INSERT INTO Boerenbedrijf (
+            Naam_Eigenaar, 
+            Voornaam_Eigenaar,
+            Geslacht,
+            Geboortedatum,
+            Adres,
+            Postcode,
+            Telefoonnummer,
+            Email,
+            Vestigingsplaats
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+SQL;
+
+        $sth = $this->conn->prepare($sql);
+        $sth->execute([
+            $NaamEigenaar, $VoornaamEigenaar, $Geslacht, $Geboortedatum,
+            $Adres, $Postcode, $Telefoonnummer, $Email, $Vestigingsplaats
+        ]);
     }
 
     function voegPerceelToe(int $bedrijfID, float $oppervlakte, string $straatnaam)
@@ -61,7 +84,7 @@ SQL;
 
         $sth = $this->conn->prepare($sql);
         $sth->execute();
-        
+
         return $sth->fetchAll();
     }
 
@@ -85,11 +108,12 @@ SQL;
 
         $sth = $this->conn->prepare($sql);
         $sth->execute();
-        
-        return $sth->fetchAll();  
+
+        return $sth->fetchAll();
     }
 
-    function voegGeteeldGewasToe(int $perceelID, string $gewasgroep, int $teeltjaar, float $totaalOpbrengst, string $bijzonderheden) {
+    function voegGeteeldGewasToe(int $perceelID, string $gewasgroep, int $teeltjaar, float $totaalOpbrengst, string $bijzonderheden)
+    {
         $sql = <<<'SQL'
         INSERT INTO Geteelde_Gewassen (Perceel_ID, Gewasgroep, Teeltjaar, Totaal_Opbrengst, Bijzonderheden)
         VALUES (?, ?, ?, ?, ?)
