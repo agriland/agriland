@@ -27,7 +27,6 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             display: block;
             width: 120px;
         }
-        
     </style>
 </head>
 
@@ -42,15 +41,21 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             <form method="POST">
                 <div class="field">
                     <label for="oppervlakte" class="label">Oppervlakte(ha)</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <input type="number" step="0.1" name="oppervlakte" class="input" />
-                    </div>
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-tape"></i>
+                                </span>
+                            </div>
                 </div>
 
                 <div class="field">
                     <label for="straatnaam" class="label">Straatnaam</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <input type="text" name="straatnaam" class="input" />
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </span>
                     </div>
                 </div>
 
