@@ -5,15 +5,23 @@ include 'database/database.inc.php';
 $db_conn = new Database();
 
 if (
-    $_POST["naam_eigenaar"] != "" &&
-    $_POST["voornaam_eigenaar"] != "" &&
-    $_POST["geslacht"] != "" &&
-    $_POST["geboortedatum"] != "" &&
-    $_POST["adres"] != "" &&
-    $_POST["postcode"] != "" &&
-    $_POST["telefoonnummer"] != "" &&
-    $_POST["email"] != "" &&
-    $_POST["vestigingsplaats"] != ""
+    isset($_GET["delete"]) &&
+    isset($_GET["delete"]["id"])
+) {
+    $db_conn->verwijderBedrijf(intval($_GET["delete"]["id"]));
+    return;
+}
+
+if (
+    isset($_POST["naam_eigenaar"]) &&
+    isset($_POST["voornaam_eigenaar"]) &&
+    isset($_POST["geslacht"]) &&
+    isset($_POST["geboortedatum"]) &&
+    isset($_POST["adres"]) &&
+    isset($_POST["postcode"]) &&
+    isset($_POST["telefoonnummer"]) &&
+    isset($_POST["email"]) &&
+    isset($_POST["vestigingsplaats"])
 ) {
     $naamEigenaar = filter_input(INPUT_POST, "naam_eigenaar", FILTER_SANITIZE_STRING);
     $voornaamEigenaar = filter_input(INPUT_POST, "voornaam_eigenaar", FILTER_SANITIZE_STRING);
@@ -140,17 +148,6 @@ if (
                     </div>
                 </div>
 
-                <?php
-
-                $bedrijven = $db_conn->haalBedrijvenOp();
-                foreach ($bedrijven as $bedrijf) {
-                    $id = $bedrijf["Bedrijf_ID"];
-                    $naamEigenaar = $bedrijf["Naam_Eigenaar"];
-                    #echo "<option value=\"" . $id . "\">" . $naamEigenaar . " - " . $id . "</option>";
-                }
-                ?>
-                </select>
-
                 <div class="control">
                     <input type="submit" value="Toevoegen" class="button is-primary" />
                 </div>
@@ -166,20 +163,26 @@ if (
                             <th>Voornaam eigenaar</th>
                             <th>Adres</th>
                             <th>Telefoonnummer</th>
+                            <th>Acties</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
 
-                        $Bedrijven = $db_conn->haalBedrijvenOp();
+                        $bedrijven = $db_conn->haalBedrijvenOp();
 
-                        foreach ($Bedrijven as $Bedrijf) {
+                        foreach ($bedrijven as $bedrijf) {
                         ?>
                             <tr>
-                                <td><?php echo htmlspecialchars($Bedrijf["Naam_Eigenaar"]) ?></td>
-                                <td><?php echo htmlspecialchars($Bedrijf["Voornaam_Eigenaar"]) ?></td>
-                                <td><?php echo htmlspecialchars($Bedrijf["Adres"]) ?></td>
-                                <td><?php echo htmlspecialchars($Bedrijf["Telefoonnummer"]) ?></td>
+                                <td><?php echo htmlspecialchars($bedrijf["Naam_Eigenaar"]) ?></td>
+                                <td><?php echo htmlspecialchars($bedrijf["Voornaam_Eigenaar"]) ?></td>
+                                <td><?php echo htmlspecialchars($bedrijf["Adres"]) ?></td>
+                                <td><?php echo htmlspecialchars($bedrijf["Telefoonnummer"]) ?></td>
+                                <td>
+                                    <button onclick='verwijderBedrijf(<?php echo $bedrijf["Bedrijf_ID"] ?>)' class="button is-danger is-rounded" title="Verwijderen">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
                         <?php
                         }
@@ -189,6 +192,13 @@ if (
             </div>
         </div>
     </div>
+
+    <script type="application/javascript">
+        async function verwijderBedrijf(id) {
+            await fetch(`?delete[id]=${id}`);
+            window.location.reload(true);
+        }
+    </script>
 </body>
 
 </html>

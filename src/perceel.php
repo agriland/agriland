@@ -4,7 +4,19 @@ include 'database/database.inc.php';
 
 $db_conn = new Database();
 
-if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam"] != "") {
+if (
+    isset($_GET["delete"]) &&
+    isset($_GET["delete"]["id"])
+) {
+    $db_conn->verwijderPerceel(intval($_GET["delete"]["id"]));
+    return;
+}
+
+if (
+    isset($_POST["bedrijf"]) &&
+    isset($_POST["oppervlakte"]) &&
+    isset($_POST["straatnaam"])
+) {
     $bedrijfID = filter_input(INPUT_POST, "bedrijf", FILTER_SANITIZE_NUMBER_INT);
     $oppervlakte = filter_input(INPUT_POST, "oppervlakte", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $straatnaam = filter_input(INPUT_POST, "straatnaam", FILTER_SANITIZE_STRING);
@@ -27,7 +39,6 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             display: block;
             width: 120px;
         }
-        
     </style>
 </head>
 
@@ -87,6 +98,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
                             <th>Naam eigenaar</th>
                             <th>Straatnaam</th>
                             <th>Oppervlakte</th>
+                            <th>Acties</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -100,6 +112,11 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
                                 <td><?php echo htmlspecialchars($perceel["Naam_Eigenaar"]) ?></td>
                                 <td><?php echo htmlspecialchars($perceel["Straatnaam"]) ?></td>
                                 <td><?php echo number_format($perceel["Oppervlakte"], 1, ",", ".") ?></td>
+                                <td>
+                                    <button onclick='verwijderPerceel(<?php echo $perceel["Perceel_ID"] ?>)' class="button is-danger is-rounded" title="Verwijderen">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
                         <?php
                         }
@@ -109,6 +126,13 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             </div>
         </div>
     </div>
+
+    <script type="application/javascript">
+        async function verwijderPerceel(id) {
+            await fetch(`?delete[id]=${id}`);
+            window.location.reload(true);
+        }
+    </script>
 </body>
 
 </html>

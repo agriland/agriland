@@ -126,4 +126,14 @@ SQL;
         $sth = $this->conn->prepare("DELETE FROM Geteelde_Gewassen WHERE Perceel_ID = ? AND Teeltjaar = ? AND Gewasgroep = ?");
         $sth->execute([$perceelID, $teeltjaar, $gewasgroep]);
     }
+
+    function verwijderPerceel(int $id) {
+        $sth = $this->conn->prepare("DELETE FROM Percelen WHERE Perceel_ID = ?");
+        $sth->execute([$id]);
+    }
+
+    function verwijderBedrijf(int $id) {
+        $sth = $this->conn->prepare("DELETE FROM Boerenbedrijf WHERE Bedrijf_ID = ?");
+        $sth->execute([$id]);
+    }
 }
