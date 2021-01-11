@@ -50,7 +50,10 @@
             <h1 class="is-size-3 has-text-centered">Deze site is gemaakt door:<br>
                 Tom van den Dorpel</h1>
             <img class="center" src="Tom.jpg">
-            <p class=text> 
+            <p class=text> Tom: Ik ben Tom van den Dorpel, klas 6 leerling aan het Calvijn College. 
+                De reden voor mij om voor dit onderwerp te kiezen is mijn interesse in de agricultuur, 
+                vaak help ik mijn opa in de groentetuin met het planten van gewassen, het poten van aardappels, etc. 
+                Ook hebben we thuis een grote tuin, waar ik vaak te vinden ben. </p>
         </div>
         <div class="column">
             <h1 class="is-size-3 has-text-centered"></br>Robert Wieringa</h1><br />
