@@ -51,7 +51,7 @@
     <img class="center" src="Tom.jpg">
     </div>
     <div class="column">
-        <h1 class="is-size-3 has-text-centered">Robert Wieringa</h1><br />
+        <h1 class="is-size-3 has-text-centered">Robert Wieringa</h1>
         <img class="center" src="Robert.jpg">
         <p class=text> Robert: Ik ben Robert Wieringa, klas 6 leerling aan het Calvijn College.
             De reden om dit onderwerp te kiezen is mijn achtergrond, in mijn vrije tijd werk ik bij een boer. </p>
