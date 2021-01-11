@@ -122,8 +122,8 @@ SQL;
         $sth->execute([$perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden]);
     }
 
-    function verwijderGeteeldGewas(int $perceelID, string $gewasgroep) {
-        $sth = $this->conn->prepare("DELETE FROM Geteelde_Gewassen WHERE Perceel_ID = ? AND Gewasgroep = ?");
-        $sth->execute([$perceelID, $gewasgroep]);
+    function verwijderGeteeldGewas(int $perceelID, int $teeltjaar, string $gewasgroep) {
+        $sth = $this->conn->prepare("DELETE FROM Geteelde_Gewassen WHERE Perceel_ID = ? AND Teeltjaar = ? AND Gewasgroep = ?");
+        $sth->execute([$perceelID, $teeltjaar, $gewasgroep]);
     }
 }

@@ -4,24 +4,26 @@ include 'database/database.inc.php';
 
 $db_conn = new Database();
 
-print_r($_GET);
 if (
-    isset($_GET["delete"])
-    && isset($_GET["delete"]["perceel"])
-    && isset($_GET["delete"]["gewasgroep"])
+    isset($_GET["delete"]) &&
+    isset($_GET["delete"]["perceel"]) &&
+    isset($_GET["delete"]["teeltjaar"]) &&
+    isset($_GET["delete"]["gewasgroep"])
 ) {
     $db_conn->verwijderGeteeldGewas(
         intval($_GET["delete"]["perceel"]),
+        intval($_GET["delete"]["teeltjaar"]),
         $_GET["delete"]["gewasgroep"]
     );
+    return;
 }
 
 if (
-    $_POST["perceel"] != "" &&
-    $_POST["gewasgroep"] != "" &&
-    $_POST["teeltjaar"] != "" &&
-    $_POST["totaalopbrengst"] != "" &&
-    $_POST["bijzonderheden"] != ""
+    isset($_POST["perceel"]) &&
+    isset($_POST["gewasgroep"]) &&
+    isset($_POST["teeltjaar"]) &&
+    isset($_POST["totaalopbrengst"]) &&
+    isset($_POST["bijzonderheden"])
 ) {
     $perceelID = filter_input(INPUT_POST, "perceel", FILTER_SANITIZE_NUMBER_INT);
     $gewasgroep = filter_input(INPUT_POST, "gewasgroep", FILTER_SANITIZE_STRING);
@@ -170,7 +172,7 @@ if (
                                 <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . " ton/ha)" ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Bijzonderheden"]) ?></td>
                                 <td>
-                                    <button onclick="verwijderGeteeldGewas(<?php echo '\'' . $gewas['Gewasgroep'] . '\'' . ',' . $gewas['Perceel_ID'] ?>)" class="button is-danger is-rounded" title="Verwijderen">
+                                    <button onclick='verwijderGeteeldGewas(<?php echo $gewas["Perceel_ID"] . ", " . $gewas["Teeltjaar"] . ", " . json_encode($gewas["Gewasgroep"]) ?>)' class="button is-danger is-rounded" title="Verwijderen">
                                         <i class="fas fa-trash-alt"></i>
                                     </button>
                                 </td>
@@ -185,8 +187,8 @@ if (
     </div>
 
     <script type="application/javascript">
-        async function verwijderGeteeldGewas(perceel, gewasgroep) {
-            await fetch(`?delete[perceel]=${perceel}&delete[gewasgroep]=${gewasgroep}`);
+        async function verwijderGeteeldGewas(perceel, teeltjaar, gewasgroep) {
+            await fetch(`?delete[perceel]=${perceel}&delete[teeltjaar]=${teeltjaar}&delete[gewasgroep]=${gewasgroep}`);
             window.location.reload(true);
         }
     </script>
