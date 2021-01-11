@@ -38,6 +38,7 @@
 <body>
     <?php include 'header.inc.php' ?>
 
+
     <div class="columns">
         <div class="column">
             <h1 class="is-size-3 has-text-centered"></br>Rutger Broekhoff</h1>
@@ -61,5 +62,7 @@
             <p class=text> Robert: Ik ben Robert Wieringa, klas 6 leerling aan het Calvijn College.
                 De reden om dit onderwerp te kiezen is mijn achtergrond, in mijn vrije tijd werk ik bij een boer. </p>
         </div>
+
+   
     </div>
 </body>
