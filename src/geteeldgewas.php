@@ -48,8 +48,8 @@ if (
             <form method="POST" class="form">
                 <div class="field">
                     <label for="gewasgroep" class="label">Gewasgroep</label>
-                    <div class="control">
-                        <div class="select">
+                    <p class="control has-icons-left">
+                        <span class="select">
                             <select name="gewasgroep">
                                 <?php
 
@@ -61,34 +61,46 @@ if (
                                 }
                                 ?>
                             </select>
-                        </div>
-                    </div>
+                        </span>
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-seedling"></i>
+                        </span>
+                    </p>
                 </div>
 
                 <div class="field">
                     <label for="teeltjaar" class="label">Teeltjaar</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <input type="number" step="1" name="teeltjaar" class="input" />
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-calendar"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="totaalopbrengst" class="label">Totaalopbrengst</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <input type="number" step="0.1" name="totaalopbrengst" class="input" />
+                    <span class="icon is-small is-left">
+                            <i class="fas fa-balance-scale"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="bijzonderheden" class="label">Bijzonderheden</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <input type="text" name="bijzonderheden" class="input" />
+                    <span class="icon is-small is-left">
+                            <i class="fas fa-sticky-note"></i>
+                        </span>
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="perceel" class="label">Perceel</label>
-                    <div class="control">
+                    <div class="control has-icons-left">
                         <div class="select">
                             <select name="perceel">
                                 <?php
@@ -104,6 +116,9 @@ if (
                                 }
                                 ?>
                             </select>
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-map-marked"></i>
+                        </span>
                         </div>
                     </div>
                 </div>
