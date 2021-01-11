@@ -27,10 +27,7 @@ if ($_POST["bedrijf"] != "" && $_POST["oppervlakte"] != "" && $_POST["straatnaam
             display: block;
             width: 120px;
         }
-
-        img {
-            max-width: 80px;
-        }
+        
     </style>
 </head>
 
