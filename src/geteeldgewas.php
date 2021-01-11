@@ -4,6 +4,18 @@ include 'database/database.inc.php';
 
 $db_conn = new Database();
 
+print_r($_GET);
+if (
+    isset($_GET["delete"])
+    && isset($_GET["delete"]["perceel"])
+    && isset($_GET["delete"]["gewasgroep"])
+) {
+    $db_conn->verwijderGeteeldGewas(
+        intval($_GET["delete"]["perceel"]),
+        $_GET["delete"]["gewasgroep"]
+    );
+}
+
 if (
     $_POST["perceel"] != "" &&
     $_POST["gewasgroep"] != "" &&
@@ -82,7 +94,7 @@ if (
                     <label for="totaalopbrengst" class="label">Totaalopbrengst</label>
                     <div class="control has-icons-left">
                         <input type="number" step="0.1" name="totaalopbrengst" class="input" />
-                    <span class="icon is-small is-left">
+                        <span class="icon is-small is-left">
                             <i class="fas fa-balance-scale"></i>
                         </span>
                     </div>
@@ -92,7 +104,7 @@ if (
                     <label for="bijzonderheden" class="label">Bijzonderheden</label>
                     <div class="control has-icons-left">
                         <input type="text" name="bijzonderheden" class="input" />
-                    <span class="icon is-small is-left">
+                        <span class="icon is-small is-left">
                             <i class="fas fa-sticky-note"></i>
                         </span>
                     </div>
@@ -117,8 +129,8 @@ if (
                                 ?>
                             </select>
                             <span class="icon is-small is-left">
-                            <i class="fas fa-map-marked"></i>
-                        </span>
+                                <i class="fas fa-map-marked"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -140,6 +152,7 @@ if (
                             <th>Straatnaam</th>
                             <th>Totaalopbrengst</th>
                             <th>Bijzonderheden</th>
+                            <th>Acties</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -154,8 +167,13 @@ if (
                                 <td><?php echo htmlspecialchars($gewas["Naam_Eigenaar"]) ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Gewasgroep"]) ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Straatnaam"]) ?></td>
-                                <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . ")" ?></td>
+                                <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . " ton/ha)" ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Bijzonderheden"]) ?></td>
+                                <td>
+                                    <button onclick="verwijderGeteeldGewas(<?php echo '\'' . $gewas['Gewasgroep'] . '\'' . ',' . $gewas['Perceel_ID'] ?>)" class="button is-danger is-rounded" title="Verwijderen">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
                             </tr>
                         <?php
                         }
@@ -165,6 +183,13 @@ if (
             </div>
         </div>
     </div>
+
+    <script type="application/javascript">
+        async function verwijderGeteeldGewas(perceel, gewasgroep) {
+            await fetch(`?delete[perceel]=${perceel}&delete[gewasgroep]=${gewasgroep}`);
+            window.location.reload(true);
+        }
+    </script>
 </body>
 
 </html>

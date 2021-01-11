@@ -99,7 +99,7 @@ SQL;
     function haalGeteeldeGewassenOp(): array
     {
         $sql = <<<'SQL'
-        SELECT gg.Teeltjaar, b.Naam_Eigenaar, gg.Gewasgroep, p.Straatnaam, gg.Totaal_Opbrengst, gg.Bijzonderheden FROM Geteelde_Gewassen AS gg
+        SELECT gg.Perceel_ID, gg.Teeltjaar, b.Naam_Eigenaar, gg.Gewasgroep, p.Straatnaam, gw.Gemiddelde_Opbrengst, gg.Totaal_Opbrengst, gg.Bijzonderheden FROM Geteelde_Gewassen AS gg
         INNER JOIN Percelen p on gg.Perceel_ID = p.Perceel_ID
         INNER JOIN Gewassen gw ON gw.Gewasgroep = gg.Gewasgroep
         INNER JOIN Boerenbedrijf b on b.Bedrijf_ID = p.Bedrijf_ID
@@ -120,5 +120,10 @@ SQL;
 SQL;
         $sth = $this->conn->prepare($sql);
         $sth->execute([$perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden]);
+    }
+
+    function verwijderGeteeldGewas(int $perceelID, string $gewasgroep) {
+        $sth = $this->conn->prepare("DELETE FROM Geteelde_Gewassen WHERE Perceel_ID = ? AND Gewasgroep = ?");
+        $sth->execute([$perceelID, $gewasgroep]);
     }
 }
