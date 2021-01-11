@@ -37,25 +37,24 @@
 
 <body>
     <?php include 'header.inc.php' ?>
-
-    <div class="columns">
-        <div class="column">
-            <h1 class="is-size-3 has-text-centered"></br>Rutger Broekhoff</h1>
-            <img class="center" src="Rutger.jpg">
-            <p class=text> Rutger: Ik ben Rutger Broekhoff, klas 6 leerling aan het Calvijn College.
-                In mijn vrije tijd werk ik als software ontwikkelaar en DevOps-engineer bij Profex bv in Kapelle.
-                Ik heb ervaring met agri gerelateerde websites zoals Agro4all.nl.</p>
-        </div>
-        <div class="column">
-            <h1 class="is-size-3 has-text-centered">Deze site is gemaakt door:<br>
-                Tom van den Dorpel</h1>
-            <img class="center" src="Tom.jpg">
-        </div>
-        <div class="column">
-            <h1 class="is-size-3 has-text-centered"></br>Robert Wieringa</h1><br />
-            <img class="center" src="Robert.jpg">
-            <p class=text> Robert: Ik ben Robert Wieringa, klas 6 leerling aan het Calvijn College.
-                De reden om dit onderwerp te kiezen is mijn achtergrond, in mijn vrije tijd werk ik bij een boer. </p>
-        </div>
+    <h1 class="is-size-3 has-text-centered">Deze site is gemaakt door:</h1>
+        <div class="columns">
+            <div class="column">
+                <h1 class="is-size-3 has-text-centered">Rutger Broekhoff</h1>
+                <img class="center" src="Rutger.jpg">
+                <p class=text> Rutger: Ik ben Rutger Broekhoff, klas 6 leerling aan het Calvijn College.
+                    In mijn vrije tijd werk ik als software ontwikkelaar en DevOps-engineer bij Profex bv in Kapelle.
+                    Ik heb ervaring met agri gerelateerde websites zoals Agro4all.nl.</p>
+            </div>
+            <div class="column">
+                <h1 class="is-size-3 has-text-centered">Tom van den Dorpel </h1>
+    <img class="center" src="Tom.jpg">
+    </div>
+    <div class="column">
+        <h1 class="is-size-3 has-text-centered">Robert Wieringa</h1><br />
+        <img class="center" src="Robert.jpg">
+        <p class=text> Robert: Ik ben Robert Wieringa, klas 6 leerling aan het Calvijn College.
+            De reden om dit onderwerp te kiezen is mijn achtergrond, in mijn vrije tijd werk ik bij een boer. </p>
+    </div>
     </div>
 </body>
