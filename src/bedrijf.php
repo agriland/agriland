@@ -13,15 +13,15 @@ if (
 }
 
 if (
-    isset($_POST["naam_eigenaar"]) &&
-    isset($_POST["voornaam_eigenaar"]) &&
-    isset($_POST["geslacht"]) &&
-    isset($_POST["geboortedatum"]) &&
-    isset($_POST["adres"]) &&
-    isset($_POST["postcode"]) &&
-    isset($_POST["telefoonnummer"]) &&
-    isset($_POST["email"]) &&
-    isset($_POST["vestigingsplaats"])
+    isset($_POST["naam_eigenaar"]) && $_POST["naam_eigenaar"] != "" &&
+    isset($_POST["voornaam_eigenaar"]) && $_POST["voornaam_eigenaar"] != "" &&
+    isset($_POST["geslacht"]) && $_POST["geslacht"] != "" &&
+    isset($_POST["geboortedatum"]) && $_POST["geboortedatum"] != "" &&
+    isset($_POST["adres"]) && $_POST["adres"] != "" &&
+    isset($_POST["postcode"]) && $_POST["postcode"] != "" &&
+    isset($_POST["telefoonnummer"]) && $_POST["telefoonnummer"] != "" &&
+    isset($_POST["email"]) && $_POST["email"] != "" &&
+    isset($_POST["vestigingsplaats"]) && $_POST["vestigingsplaats"] != ""
 ) {
     $naamEigenaar = filter_input(INPUT_POST, "naam_eigenaar", FILTER_SANITIZE_STRING);
     $voornaamEigenaar = filter_input(INPUT_POST, "voornaam_eigenaar", FILTER_SANITIZE_STRING);
@@ -68,21 +68,29 @@ if (
                 <div class="field">
                     <label for="naam_eigenaar" class="label">Naam eigenaar</label>
                     <div class="control">
-                        <input type="text" name="naam_eigenaar" class="input" />
+                        <input type="text" name="naam_eigenaar" class="input" required />
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="voornaam_eigenaar" class="label">Voornaam eigenaar</label>
                     <div class="control">
-                        <input type="text" name="voornaam_eigenaar" class="input" />
+                        <input type="text" name="voornaam_eigenaar" class="input" required />
                     </div>
                 </div>
 
                 <div class="control">
                     <label class="label">Geslacht</label>
+                    <?php /* 
+                    
+                        Ten minste één van de twee moet aangeklikt worden, 
+                        in HTML hoef je dan maar voor één required aan te zetten.
+
+                        Zie https://stackoverflow.com/questions/8287779/how-to-use-the-required-attribute-with-a-radio-input-field
+                        
+                    */ ?>
                     <label for="geslacht" class="radio">
-                        <input type="radio" name="geslacht" value="m" />
+                        <input type="radio" name="geslacht" value="m" required />
                         Man
                     </label>
                     <label for="geslacht" class="radio">
@@ -94,14 +102,14 @@ if (
                 <div class="field">
                     <label for="geboortedatum" class="label">Geboortedatum</label>
                     <div class="control">
-                        <input type="date" id="start" name="geboortedatum" min="1900" max="<?php echo date('Y-m-d') ?>">
+                        <input type="date" id="start" name="geboortedatum" min="1900" max="<?php echo date('Y-m-d') ?>" required />
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="vestigingsplaats" class="label">Vestigingsplaats</label>
                     <div class="control has-icons-left">
-                        <input type="text" name="vestigingsplaats" class="input" />
+                        <input type="text" name="vestigingsplaats" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-city"></i>
                         </span>
@@ -111,7 +119,7 @@ if (
                 <div class="field">
                     <label for="adres" class="label">Adres</label>
                     <div class="control has-icons-left">
-                        <input type="text" name="adres" class="input" />
+                        <input type="text" name="adres" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-map-marker-alt"></i>
                         </span>
@@ -121,7 +129,7 @@ if (
                 <div class="field">
                     <label for="postcode" class="label">Postcode</label>
                     <div class="control has-icons-left">
-                        <input type="text" name="postcode" placeholder="1234AB" class="input" />
+                        <input type="text" name="postcode" placeholder="1234AB" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-inbox"></i>
                         </span>
@@ -131,7 +139,7 @@ if (
                 <div class="field">
                     <label for="telefoonnummer" class="label">Telefoonnummer</label>
                     <div class="control has-icons-left">
-                        <input type="text" name="telefoonnummer" class="input" />
+                        <input type="text" name="telefoonnummer" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-phone"></i>
                         </span>
@@ -141,7 +149,7 @@ if (
                 <div class="field">
                     <label for="email" class="label">Email</label>
                     <div class="control has-icons-left">
-                        <input type="email" name="email" class="input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" />
+                        <input type="email" name="email" class="input" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                         </span>

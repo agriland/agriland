@@ -19,11 +19,11 @@ if (
 }
 
 if (
-    isset($_POST["perceel"]) &&
-    isset($_POST["gewasgroep"]) &&
-    isset($_POST["teeltjaar"]) &&
-    isset($_POST["totaalopbrengst"]) &&
-    isset($_POST["bijzonderheden"])
+    isset($_POST["perceel"]) && $_POST["perceel"] != "" &&
+    isset($_POST["gewasgroep"]) && $_POST["gewasgroep"] != "" &&
+    isset($_POST["teeltjaar"]) && $_POST["teeltjaar"] != "" &&
+    isset($_POST["totaalopbrengst"]) && $_POST["totaalopbrengst"] != "" &&
+    isset($_POST["bijzonderheden"]) && $_POST["bijzonderheden"] != ""
 ) {
     $perceelID = filter_input(INPUT_POST, "perceel", FILTER_SANITIZE_NUMBER_INT);
     $gewasgroep = filter_input(INPUT_POST, "gewasgroep", FILTER_SANITIZE_STRING);
@@ -64,7 +64,7 @@ if (
                     <label for="gewasgroep" class="label">Gewasgroep</label>
                     <p class="control has-icons-left">
                         <span class="select">
-                            <select name="gewasgroep">
+                            <select name="gewasgroep" required>
                                 <?php
 
                                 $gewassen = $db_conn->haalGewassenOp();
@@ -85,7 +85,7 @@ if (
                 <div class="field">
                     <label for="teeltjaar" class="label">Teeltjaar</label>
                     <div class="control has-icons-left">
-                        <input type="number" step="1" name="teeltjaar" class="input" />
+                        <input type="number" step="1" name="teeltjaar" min="<?php echo date("Y") - 20 ?>" max="<?php echo date("Y") ?>" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-calendar"></i>
                         </span>
@@ -95,7 +95,7 @@ if (
                 <div class="field">
                     <label for="totaalopbrengst" class="label">Totaalopbrengst</label>
                     <div class="control has-icons-left">
-                        <input type="number" step="0.1" name="totaalopbrengst" class="input" />
+                        <input type="number" step="0.1" name="totaalopbrengst" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-balance-scale"></i>
                         </span>
@@ -105,7 +105,7 @@ if (
                 <div class="field">
                     <label for="bijzonderheden" class="label">Bijzonderheden</label>
                     <div class="control has-icons-left">
-                        <input type="text" name="bijzonderheden" class="input" />
+                        <input type="text" name="bijzonderheden" class="input" required />
                         <span class="icon is-small is-left">
                             <i class="fas fa-sticky-note"></i>
                         </span>
@@ -116,7 +116,7 @@ if (
                     <label for="perceel" class="label">Perceel</label>
                     <div class="control has-icons-left">
                         <div class="select">
-                            <select name="perceel">
+                            <select name="perceel" required>
                                 <?php
 
                                 $percelen = $db_conn->haalPercelenOp();
@@ -138,7 +138,7 @@ if (
                 </div>
 
                 <div class="control">
-                    <input type="submit" value="Toevoegen" class="button is-primary" />
+                    <input type="submit" value="Toevoegen" class="button is-primary" required />
                 </div>
             </form>
             <br />

@@ -13,9 +13,9 @@ if (
 }
 
 if (
-    isset($_POST["bedrijf"]) &&
-    isset($_POST["oppervlakte"]) &&
-    isset($_POST["straatnaam"])
+    isset($_POST["bedrijf"]) && $_POST["bedrijf"] != "" &&
+    isset($_POST["oppervlakte"]) && $_POST["oppervlakte"] != "" &&
+    isset($_POST["straatnaam"]) && $_POST["straatnaam"] != ""
 ) {
     $bedrijfID = filter_input(INPUT_POST, "bedrijf", FILTER_SANITIZE_NUMBER_INT);
     $oppervlakte = filter_input(INPUT_POST, "oppervlakte", FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
@@ -54,14 +54,14 @@ if (
                 <div class="field">
                     <label for="oppervlakte" class="label">Oppervlakte(ha)</label>
                     <div class="control">
-                        <input type="number" step="0.1" name="oppervlakte" class="input" />
+                        <input type="number" step="0.1" name="oppervlakte" class="input" required />
                     </div>
                 </div>
 
                 <div class="field">
                     <label for="straatnaam" class="label">Straatnaam</label>
                     <div class="control">
-                        <input type="text" name="straatnaam" class="input" />
+                        <input type="text" name="straatnaam" class="input" required />
                     </div>
                 </div>
 
@@ -69,7 +69,7 @@ if (
                     <label for="bedrijf" class="label">Bedrijf</label>
                     <div class="control">
                         <div class="select">
-                            <select name="bedrijf">
+                            <select name="bedrijf" required>
                                 <?php
 
                                 $bedrijven = $db_conn->haalBedrijvenOp();
