@@ -23,7 +23,7 @@ if (
     isset($_POST["gewasgroep"]) && $_POST["gewasgroep"] != "" &&
     isset($_POST["teeltjaar"]) && $_POST["teeltjaar"] != "" &&
     isset($_POST["totaalopbrengst"]) && $_POST["totaalopbrengst"] != "" &&
-    isset($_POST["bijzonderheden"]) && $_POST["bijzonderheden"] != ""
+    isset($_POST["bijzonderheden"])
 ) {
     $perceelID = filter_input(INPUT_POST, "perceel", FILTER_SANITIZE_NUMBER_INT);
     $gewasgroep = filter_input(INPUT_POST, "gewasgroep", FILTER_SANITIZE_STRING);
@@ -107,7 +107,7 @@ if (
                 <div class="field">
                     <label for="bijzonderheden" class="label">Bijzonderheden</label>
                     <div class="control has-icons-left">
-                        <input type="text" name="bijzonderheden" class="input" required />
+                        <input type="text" name="bijzonderheden" class="input" />
                         <span class="icon is-small is-left">
                             <i class="fas fa-sticky-note"></i>
                         </span>
