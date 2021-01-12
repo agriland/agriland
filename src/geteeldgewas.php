@@ -143,7 +143,7 @@ if (
             </form>
             <br />
 
-            <h2 class="is-size-3">Percelen</h2>
+            <h2 class="is-size-3">Eerder geteelde gewassen</h2>
             <div class="table-container">
                 <table class="table is-striped is-hoverable is-fullwidth">
                     <thead>
