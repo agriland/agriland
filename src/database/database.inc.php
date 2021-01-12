@@ -99,7 +99,7 @@ SQL;
     function haalGeteeldeGewassenOp(): array
     {
         $sql = <<<'SQL'
-        SELECT gg.Perceel_ID, gg.Teeltjaar, b.Naam_Eigenaar, gg.Gewasgroep, p.Straatnaam, gw.Gemiddelde_Opbrengst, gg.Totaal_Opbrengst, gg.Bijzonderheden FROM Geteelde_Gewassen AS gg
+        SELECT gg.Perceel_ID, gg.Teeltjaar, b.Naam_Eigenaar, gg.Gewasgroep, p.Straatnaam, p.Oppervlakte, gw.Gemiddelde_Opbrengst, gg.Totaal_Opbrengst, gg.Bijzonderheden FROM Geteelde_Gewassen AS gg
         INNER JOIN Percelen p on gg.Perceel_ID = p.Perceel_ID
         INNER JOIN Gewassen gw ON gw.Gewasgroep = gg.Gewasgroep
         INNER JOIN Boerenbedrijf b on b.Bedrijf_ID = p.Bedrijf_ID

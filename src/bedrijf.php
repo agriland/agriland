@@ -44,6 +44,8 @@ if (
         $email,
         $vestigingsplaats
     );
+
+    header('Location: bedrijf.php');
 }
 
 ?>

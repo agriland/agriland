@@ -22,6 +22,8 @@ if (
     $straatnaam = filter_input(INPUT_POST, "straatnaam", FILTER_SANITIZE_STRING);
 
     $db_conn->voegPerceelToe($bedrijfID, $oppervlakte, $straatnaam);
+
+    header('Location: perceel.php');
 }
 
 ?>

@@ -32,6 +32,8 @@ if (
     $bijzonderheden = filter_input(INPUT_POST, "bijzonderheden", FILTER_SANITIZE_STRING);
 
     $db_conn->voegGeteeldGewasToe($perceelID, $gewasgroep, $teeltjaar, $totaalOpbrengst, $bijzonderheden);
+
+    header('Location: geteeldgewas.php');
 }
 
 ?>
@@ -93,7 +95,7 @@ if (
                 </div>
 
                 <div class="field">
-                    <label for="totaalopbrengst" class="label">Totaalopbrengst</label>
+                    <label for="totaalopbrengst" class="label">Totaalopbrengst (ton)</label>
                     <div class="control has-icons-left">
                         <input type="number" step="0.1" name="totaalopbrengst" class="input" required />
                         <span class="icon is-small is-left">
@@ -152,7 +154,8 @@ if (
                             <th>Naam eigenaar</th>
                             <th>Gewas</th>
                             <th>Straatnaam</th>
-                            <th>Totaalopbrengst</th>
+                            <th>Totaalopbrengst (ton)</th>
+                            <th>Opbrengst (ton / ha)</th>
                             <th>Bijzonderheden</th>
                             <th>Acties</th>
                         </tr>
@@ -169,7 +172,8 @@ if (
                                 <td><?php echo htmlspecialchars($gewas["Naam_Eigenaar"]) ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Gewasgroep"]) ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Straatnaam"]) ?></td>
-                                <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . " ton/ha)" ?></td>
+                                <td><?php echo number_format($gewas["Totaal_Opbrengst"], 1, ",", ".") ?></td>
+                                <td><?php echo number_format($gewas["Totaal_Opbrengst"] / $gewas["Oppervlakte"], 1, ",", ".") . " (gemiddeld " . number_format($gewas["Gemiddelde_Opbrengst"], 1, ",", ".") . ")" ?></td>
                                 <td><?php echo htmlspecialchars($gewas["Bijzonderheden"]) ?></td>
                                 <td>
                                     <button onclick='verwijderGeteeldGewas(<?php echo $gewas["Perceel_ID"] . ", " . $gewas["Teeltjaar"] . ", " . json_encode($gewas["Gewasgroep"]) ?>)' class="button is-danger is-rounded" title="Verwijderen">

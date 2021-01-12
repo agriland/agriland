@@ -17,7 +17,7 @@ body {
         width: 100%;
     }
 
-    #form-container-bg {
+    .form-container-bg {
         border-radius: 0px !important;
     }
 }
