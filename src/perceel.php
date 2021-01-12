@@ -6,7 +6,7 @@ $db_conn = new Database();
 
 if (
     isset($_GET["delete"]) &&
-    isset($_GET["delete"]["id"])
+    isset($_GET["delete"]["id"]) && $_GET["delete"]["id"] != ""
 ) {
     $db_conn->verwijderPerceel(intval($_GET["delete"]["id"]));
     return;

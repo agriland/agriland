@@ -6,9 +6,9 @@ $db_conn = new Database();
 
 if (
     isset($_GET["delete"]) &&
-    isset($_GET["delete"]["perceel"]) &&
-    isset($_GET["delete"]["teeltjaar"]) &&
-    isset($_GET["delete"]["gewasgroep"])
+    isset($_GET["delete"]["perceel"]) && $_GET["delete"]["perceel"] != "" &&
+    isset($_GET["delete"]["teeltjaar"]) && $_GET["delete"]["teeltjaar"] != "" &&
+    isset($_GET["delete"]["gewasgroep"]) && $_GET["delete"]["gewasgroep"] != ""
 ) {
     $db_conn->verwijderGeteeldGewas(
         intval($_GET["delete"]["perceel"]),
