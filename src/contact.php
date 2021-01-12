@@ -13,7 +13,6 @@
 
         html,
         body {
-            background-color: white;
             height: 100%;
         }
 
@@ -24,31 +23,25 @@
             align-items: center;
             justify-content: space-evenly;
             height: 30%;
+
+            font-size: 16pt;
+            text-align: center;
+            text-shadow:
+                2px 2px 4px #ffffff,
+                2px 2px 8px #ffffff,
+                2px 2px 16px #ffffff;
         }
     </style>
 </head>
 
 <body>
-    <style>
-        body {
-            background-image: url('https://images.unsplash.com/photo-1497092801449-b782257c9756?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1353&q=80');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: 100% 110%;
-        }
-    </style>
-    <?php include 'header.inc.php'?>
+    <?php include 'header.inc.php' ?>
+
     <div class="content">
-        <div>
-            <div>
-                <div>
-                    Voor vragen of opmerkingen over deze site kunt u mailen naar info@agriland.nl of bellen naar 06-12345678
-                </div>
-            </div>
-        </div>
+        <p>
+            Voor vragen of opmerkingen over deze site kunt u mailen naar info@agriland.nl of bellen naar 06-12345678
+        </p>
     </div>
-    
-    
 </body>
 
 </html>
