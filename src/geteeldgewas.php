@@ -40,7 +40,7 @@ if (
 <html lang="nl">
 
 <head>
-    <title>Geteeld gewas toevoegen &middot; Agriland</title>
+    <title>Teelt &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 
     <style>

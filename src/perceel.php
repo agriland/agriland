@@ -30,7 +30,7 @@ if (
 <html lang="nl">
 
 <head>
-    <title>Perceel toevoegen &middot; Agriland</title>
+    <title>Percelen &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 
     <style>

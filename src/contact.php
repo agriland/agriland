@@ -2,7 +2,7 @@
 <html lang="nl">
 
 <head>
-    <title>Agriland &middot; Home</title>
+    <title>Contact &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 
     <style>

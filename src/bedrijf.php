@@ -52,7 +52,7 @@ if (
 <html lang="nl">
 
 <head>
-    <title>Bedrijf toevoegen &middot; Agriland</title>
+    <title>Bedrijven &middot; Agriland</title>
     <?php include 'head.inc.php' ?>
 </head>
 
