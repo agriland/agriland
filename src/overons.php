@@ -60,7 +60,7 @@
         <div class="columns members">
             <div class="column">
                 <h1 class="is-size-3 has-text-centered text-glow">Rutger Broekhoff</h1>
-                <img class="center member-picture" src="Rutger.jpg">
+                <img class="center member-picture" src="static/img/Rutger.jpg">
                 <p class="text">
                     Rutger: Ik ben Rutger Broekhoff, leerling VWO 6 aan het Calvijn College.
                     In mijn vrije tijd werk ik als software ontwikkelaar en DevOps-engineer bij Profects bv in Kapelle.
@@ -69,7 +69,7 @@
             </div>
             <div class="column">
                 <h1 class="is-size-3 has-text-centered text-glow">Tom van den Dorpel</h1>
-                <img class="center member-picture" src="Tom.jpg">
+                <img class="center member-picture" src="static/img/Tom.jpg">
                 <p class="text">
                     Tom: Ik ben Tom van den Dorpel, leerling VWO 6 aan het Calvijn College.
                     De reden voor mij om voor dit onderwerp te kiezen is mijn interesse in de agricultuur,
@@ -79,7 +79,7 @@
             </div>
             <div class="column">
                 <h1 class="is-size-3 has-text-centered text-glow">Robert Wieringa</h1>
-                <img class="center member-picture" src="Robert.jpg">
+                <img class="center member-picture" src="static/img/Robert.jpg">
                 <p class="text">
                     Robert: Ik ben Robert Wieringa, leerling VWO 6 aan het Calvijn College.
                     De reden om dit onderwerp te kiezen is mijn achtergrond, in mijn vrije tijd werk ik bij een boer.

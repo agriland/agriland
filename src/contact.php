@@ -39,7 +39,8 @@
 
     <div class="content">
         <p>
-            Voor vragen of opmerkingen over deze site kunt u mailen naar info@agriland.nl of bellen naar 06-12345678
+            Voor vragen of opmerkingen over deze site kunt u mailen naar <a href="mailto:info@agriland.nl">info@agriland.nl</a> 
+            of bellen naar <a href="tel:+31612345678">+31 6 12345678</a>.
         </p>
     </div>
 </body>
